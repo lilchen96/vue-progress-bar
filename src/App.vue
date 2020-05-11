@@ -1,6 +1,6 @@
 <template>
   <div>
-    <test></test>
+    <IllmaticProgressBar></IllmaticProgressBar>
   </div>
 </template>
 
