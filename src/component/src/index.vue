@@ -1,19 +1,31 @@
 <template>
-  <div class="line-progress-bar" @click="progressJump">
-    <div class="inner-line"></div>
+  <div class="line-progress-bar">
     <div
-      class="outer-line"
+      class="line inner-line"
       :style="{
+        height: this.styleOptions.height + 'px',
+        borderRadius: this.styleOptions.height / 2 + 'px',
+        backgroundColor: this.styleOptions.backgroundColor,
+      }"
+      @click="progressJump"
+    ></div>
+    <div
+      class="line outer-line"
+      :style="{
+        height: this.styleOptions.height + 'px',
+        marginTop: '-' + this.styleOptions.height + 'px',
+        borderRadius: this.styleOptions.height / 2 + 'px',
+        backgroundColor: this.styleOptions.progressColor,
         transform: 'translateX(' + (progressPercent - 100) + '%' + ')',
       }"
     ></div>
-    <div
+    <!-- <div
       class="draggle-point"
       :style="{
         transform:
           'translateX(' + (progressPercent / 100) * progressWidth + 'px' + ')',
       }"
-    ></div>
+    ></div> -->
   </div>
 </template>
 
@@ -21,6 +33,17 @@
 export default {
   name: "IllmaticProgressBar",
   props: {
+    styleOptions: {
+      type: Object,
+      default: () => {
+        return {
+          height: 30,
+          borderWidth: 4,
+          progressColor: "#87CEFA",
+          backgroundColor: "#EDEDED",
+        };
+      },
+    },
     // 进度条加载总量
     duration: {
       type: Number,
@@ -43,6 +66,7 @@ export default {
       speed: 1, // 进度条速度
       interval: {}, // 定时任务
       progressWidth: 0, // 进度条长度
+      progressHeight: 0, //进度条高度
       progressIsRun: false,
     };
   },
@@ -85,8 +109,8 @@ export default {
     // 刷新进度条
     refresh() {
       this.progressPercent += this.speed;
-      console.log(this.progressPercent);
-      if (this.progressPercent >= 100) {
+      if (100 - this.progressPercent <= this.speed) {
+        this.progressPercent = 100;
         clearInterval(this.interval);
       }
     },
@@ -123,20 +147,15 @@ export default {
 <style lang="less" scoped>
 .line-progress-bar {
   overflow: hidden;
-  .inner-line {
-    background-color: blue;
+  .line {
     width: 100%;
-    height: 2px;
     border-radius: 10px;
-    opacity: 0.5;
+  }
+  .inner-line {
   }
 
   .outer-line {
-    background-color: red;
-    margin-top: -2px;
-    width: 100%;
-    height: 2px;
-    border-radius: 10px;
+    pointer-events: none;
   }
   .draggle-point {
     position: absolute;
