@@ -4,7 +4,6 @@
       class="line inner-line"
       :style="{
         height: this.styleOptions.height + 'px',
-        borderRadius: this.styleOptions.height / 2 + 'px',
         backgroundColor: this.styleOptions.backgroundColor,
       }"
       @click="progressJump"
@@ -14,7 +13,6 @@
       :style="{
         height: this.styleOptions.height + 'px',
         marginTop: '-' + this.styleOptions.height + 'px',
-        borderRadius: this.styleOptions.height / 2 + 'px',
         backgroundColor: this.styleOptions.progressColor,
         transform: 'translateX(' + (progressPercent - 100) + '%' + ')',
       }"
@@ -38,7 +36,6 @@ export default {
       default: () => {
         return {
           height: 30,
-          borderWidth: 4,
           progressColor: "#87CEFA",
           backgroundColor: "#EDEDED",
         };
@@ -79,6 +76,7 @@ export default {
   },
 
   methods: {
+    // borderRadius: this.styleOptions.height / 2 + 'px',
     // 进度条启动
     run() {
       if (!this.progressIsRun) {
@@ -149,7 +147,6 @@ export default {
   overflow: hidden;
   .line {
     width: 100%;
-    border-radius: 10px;
   }
   .inner-line {
   }

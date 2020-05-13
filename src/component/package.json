@@ -1,11 +1,23 @@
 {
-  "name": "npm-package-name",
-  "version": "1.0.0",
-  "description": "",
+  "name": "illmatic-progress-bar",
+  "version": "1.0.1",
+  "description": "illmatic-progress-bar",
   "main": "dist/bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "MIT"
+  "author": "lilchen96",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lilchen96/vue-progress-bar.git"
+  },
+  "keywords": [
+    "vue",
+    "progressBar"
+  ],
+  "bugs": {
+    "url": "https://github.com/lilchen96/vue-progress-bar/issues"
+  },
+  "homepage": "https://github.com/lilchen96/vue-progress-bar#readme"
 }
